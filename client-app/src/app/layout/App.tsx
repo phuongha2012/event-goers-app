@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
-import { Header, Icon, List } from 'semantic-ui-react';
+import { Header, Icon, List, Container } from 'semantic-ui-react';
 import { IActivity } from '../models/activity';
+import { NavBar } from '../../features/nav/NavBar';
 
 const App = () => {
   const [activities, setActivities] = useState<IActivity[]>([]);
@@ -15,17 +16,16 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      <Header as='h2'>
-        <Icon name='plug' />
-        <Header.Content>Event Goers</Header.Content>
-      </Header>
-      <List>
-        {activities.map(activity => (
-          <List.Item key={activity.id}>{activity.title}</List.Item>
-        ))}
-      </List>
-    </div>
+    <Fragment>
+      <NavBar />
+      <Container style={{marginTop: '7em'}}>
+        <List>
+          {activities.map(activity => (
+            <List.Item key={activity.id}>{activity.title}</List.Item>
+          ))}
+        </List>
+      </Container>
+    </Fragment>
   );
 }
 
