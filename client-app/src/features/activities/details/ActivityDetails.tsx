@@ -6,9 +6,9 @@ import { observer } from "mobx-react-lite";
 const ActivityDetails: React.FC = () => {
   const activityStore = useContext(ActivityStore);
   const {
-    selectedActivity: activity,
+    activity,
     openEditForm,
-    cancelSelectedActivity,
+    cancelActivity,
   } = activityStore;
 
   return (
@@ -34,7 +34,7 @@ const ActivityDetails: React.FC = () => {
             content="Edit"
           ></Button>
           <Button
-            onClick={cancelSelectedActivity}
+            onClick={cancelActivity}
             basic
             color="grey"
             content="Cancel"
