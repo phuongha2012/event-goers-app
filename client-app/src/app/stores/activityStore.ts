@@ -8,7 +8,7 @@ configure({enforceActions: 'always'});
 class ActivityStore {
     @observable activityRegistry = new Map();
     @observable activities: IActivity[] = [];
-    @observable activity: IActivity | undefined;
+    @observable activity: IActivity | null = null;
     @observable loadingInitial = false;
     @observable editMode = false;
     @observable submitting = false;
@@ -58,6 +58,10 @@ class ActivityStore {
                 console.log(error);
             }
         }
+    }
+
+    @action clearActivity = () => {
+        this.activity = null;
     }
 
     getActivity = (id: string) => {
@@ -121,7 +125,7 @@ class ActivityStore {
     @action openCreateForm = () => {
         this.editMode = true;
         console.log('called', 'editMode is: ', this.editMode);
-        this.activity = undefined;
+        this.activity = null;
     }
 
     @action openEditForm = (id: string) => {
@@ -130,7 +134,7 @@ class ActivityStore {
     }
 
     @action cancelActivity = () => {
-        this.activity = undefined;
+        this.activity = null;
     }
 
     @action cancelFormOpen = () => {
