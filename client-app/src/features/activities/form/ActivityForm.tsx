@@ -11,6 +11,7 @@ interface DetailParams {
 
 export const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
   match,
+  history
 }) => {
   const activityStore = useContext(ActivityStore);
   const {
@@ -34,16 +35,15 @@ export const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
   });
 
   useEffect(() => {
-    if (match.params.id) {
+    if (match.params.id && activity.id.length === 0) {
       loadActivity(match.params.id).then(
         () => initialFormState && setActivity(initialFormState)
       );
     }
-
     return () => {
       clearActivity();
     }
-  }, [loadActivity, clearActivity, match.params.id, initialFormState]);
+  }, [loadActivity, clearActivity, match.params.id, initialFormState, activity.id.length]);
 
   const handleInputChange = (
     event: FormEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -62,9 +62,9 @@ export const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
         ...activity,
         id: uuid(),
       };
-      createActivity(newActivity);
+      createActivity(newActivity).then(() => history.push(`/activities/${newActivity.id}`));
     } else {
-      editActivity(activity);
+      editActivity(activity).then(() => history.push(`/activities/${activity.id}`));
     }
   };
 
