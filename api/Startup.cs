@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Middleware;
 using Application.Activities;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -57,7 +58,8 @@ namespace Api
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseMiddleware<ErrorHandlingMiddleware>();
+                // app.UseDeveloperExceptionPage();
             }
 
             app.UseRouting();
