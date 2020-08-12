@@ -67,7 +67,7 @@ class ActivityStore {
                 runInAction('get activity error', () => {
                     this.submitting = false;
                 }) 
-                throw error;
+                console.log(error);
             }
         }
     }
