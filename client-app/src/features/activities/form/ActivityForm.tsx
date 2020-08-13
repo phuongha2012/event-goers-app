@@ -6,6 +6,9 @@ import ActivityStore from "../../../app/stores/activityStore";
 import { RouteComponentProps } from "react-router-dom";
 import { Form as FinalForm, Field } from "react-final-form";
 import TextInput from "../../../app/common/form/TextInput";
+import TextAreaInput from "../../../app/common/form/TextAreaInput";
+import SelectInput from "../../../app/common/form/SelectInput";
+import { category } from "../../../app/common/options/categoryOptions";
 
 interface DetailParams {
   id: string;
@@ -89,12 +92,15 @@ export const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
                 <Field
                   name="description"
                   placeholder="Description"
-                  component={TextInput}
+                  rows="3"
+                  component={TextAreaInput}
                 />
                 <Field
                   name="category"
                   placeholder="Category"
-                  component={TextInput}
+                  options={category}
+                  value={activity.category}
+                  component={SelectInput}
                 />
                 <Field
                   component={TextInput}
