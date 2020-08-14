@@ -13,14 +13,16 @@ const TextInput: React.FC<IProps> = ({
   placeholder,
   meta: { touched, error },
 }) => {
-  return <Form.Field error={touched && !!error} type={type} width={width}>
-      <input {...input} placeholder={placeholder}/>
+  return (
+    <Form.Field error={touched && !!error} type={type} width={width}>
+      <input {...input} placeholder={placeholder} />
       {touched && error && (
-          <Label basic color='red'>
-              {error}
-          </Label>
+        <Label basic color="red">
+          {error}
+        </Label>
       )}
-  </Form.Field>;
+    </Form.Field>
+  );
 };
 
 export default TextInput;
