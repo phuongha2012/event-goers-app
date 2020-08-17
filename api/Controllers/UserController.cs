@@ -1,10 +1,12 @@
 using System.Threading.Tasks;
 using Application.User;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
+    [AllowAnonymous]
     public class UserController : BaseController
     {
         [HttpPost("login")]
