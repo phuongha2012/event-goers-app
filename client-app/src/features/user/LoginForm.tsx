@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Form as FinalForm, Field } from "react-final-form";
-import { Form, Button, Label } from "semantic-ui-react";
+import { Form, Button, Label, Header } from "semantic-ui-react";
 import TextInput from "../../app/common/form/TextInput";
 import { RootStoreContext } from "../../app/stores/rootStore";
 import { IUserFormValues } from "../../app/models/user";
@@ -31,9 +31,15 @@ const LoginForm = () => {
         submitError,
         invalid,
         pristine,
-        dirtySinceLastSubmit
+        dirtySinceLastSubmit,
       }) => (
         <Form onSubmit={handleSubmit}>
+          <Header
+            as="h2"
+            content="Login to Reactivities"
+            color="teal"
+            textAlign="center"
+          />
           <Field name="email" component={TextInput} placeholder="Email" />
           <Field
             name="password"
@@ -45,12 +51,12 @@ const LoginForm = () => {
             <Label color="red" basic content={submitError.statusText} />
           )}
           <Button
-            disabled={invalid && !dirtySinceLastSubmit || pristine}
+            disabled={(invalid && !dirtySinceLastSubmit) || pristine}
             loading={submitting}
-            positive
+            color="teal"
+            fluid
             content="Login"
           />
-          <pre>{JSON.stringify(form.getState(), null, 2)}</pre>
         </Form>
       )}
     />
