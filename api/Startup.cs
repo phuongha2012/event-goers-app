@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Api.Middleware;
 using Application.Activities;
 using Application.Interfaces;
+using AutoMapper;
 using Domain;
 using FluentValidation.AspNetCore;
 using Infrastructure.Security;
@@ -54,6 +55,7 @@ namespace Api
             });
 
             services.AddMediatR(typeof(List.Handler).Assembly);
+            services.AddAutoMapper(typeof(List.Handler));
 
             services.AddControllers(opt =>
             {
