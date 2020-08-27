@@ -44,5 +44,11 @@ namespace Api.Controllers
         {
             return await Mediator.Send(new Delete.Command{Id = id});
         }
+
+        [HttpPost("{id}/attend")]
+        public async Task<ActionResult<Unit>> Attend(Guid id)
+        {
+            return await Mediator.Send(new Attend.Command{Id = id});
+        }
     }
 }
