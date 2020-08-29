@@ -1,3 +1,4 @@
+using System;
 using Application.Interfaces;
 using Application.Photos;
 using CloudinaryDotNet;
@@ -37,13 +38,14 @@ namespace Infrastructure.Photos
                 }
             }
 
+            if (uploadResult.Error != null) 
+                throw new Exception(uploadResult.Error.Message);
+
             return new PhotoUploadResult
             {
                 PublicId = uploadResult.PublicId,
                 Url = uploadResult.SecureUri.AbsoluteUri
-            }
-
-            
+            };      
         }
 
         public string DeletePhoto(string punlicId)
