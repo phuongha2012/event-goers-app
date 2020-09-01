@@ -6,12 +6,20 @@ import { observer } from "mobx-react-lite";
 
 const ProfilePhotos = () => {
   const rootStore = useContext(RootStoreContext);
-  const { profile, isCurrentUser, uploadingPhoto, uploadPhoto } = rootStore.profileStore;
+  const {
+    profile,
+    isCurrentUser,
+    uploadingPhoto,
+    uploadPhoto,
+    setMainPhoto,
+    loading,
+  } = rootStore.profileStore;
   const [addPhotoMode, setAddPhotoMode] = useState(true);
+  const [target, setTarget] = useState<string | undefined>(undefined);
 
   const handleUploadImage = (photo: Blob) => {
     uploadPhoto(photo).then(() => setAddPhotoMode(false));
-  }
+  };
 
   return (
     <Tab.Pane>
@@ -30,19 +38,33 @@ const ProfilePhotos = () => {
       </Grid>
       <Grid.Column width={16}>
         {addPhotoMode ? (
-          <PhotoUploadWidget uploadPhoto={handleUploadImage} loading={uploadingPhoto} />
+          <PhotoUploadWidget
+            uploadPhoto={handleUploadImage}
+            loading={uploadingPhoto}
+          />
         ) : (
           <Card.Group itemsPerRow={5}>
             {profile &&
               profile.photos.map((photo) => (
                 <Card key={photo.id}>
                   <Image src={photo.url} />
-                  {isCurrentUser &&
+                  {isCurrentUser && (
                     <Button.Group fluid widths={2}>
-                        <Button basic positive content="Main" />
-                        <Button basic negative icon="trash" />
+                      <Button
+                        name={photo.id}
+                        onClick={(e) => {
+                          setMainPhoto(photo);
+                          setTarget(e.currentTarget.name)
+                        }}
+                        loading={loading && target === photo.id}
+                        disabled={photo.isMain}
+                        basic
+                        positive
+                        content="Main"
+                      />
+                      <Button basic negative icon="trash" />
                     </Button.Group>
-                  }
+                  )}
                 </Card>
               ))}
           </Card.Group>
