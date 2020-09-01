@@ -17,7 +17,7 @@ namespace Api.SignalR
 
         public async Task SendComment(Create.Command command)
         {
-            var username = Context.User?.Claims?.FirstOrDefault(x => x.Type === ClaimTypes.NameIdentifier)?.Value;
+            var username = Context.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
             
             command.Username = username;
 
