@@ -32,10 +32,10 @@ export default class ActivityStore {
 
         this.hubConnection
             .start()
-            .then(() => console.log(this.hubConnection!.state))
             .then(() => {
-                console.log("Attempting to join group");
-                this.hubConnection!.invoke('AddToGroup', activityId)
+                if (this.hubConnection!.state === 'Connected'){
+                    this.hubConnection!.invoke('AddToGroup', activityId)
+                }
             })
             .catch(error => console.log("Error establishing connection: ", error));
 

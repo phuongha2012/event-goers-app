@@ -10,21 +10,28 @@ import SelectInput from "../../../app/common/form/SelectInput";
 import { category } from "../../../app/common/options/categoryOptions";
 import DateInput from "../../../app/common/form/DateInput";
 import { combineDateAndTime } from "../../../app/common/util/util";
-import { combineValidators, isRequired, composeValidators, hasLengthGreaterThan } from 'revalidate';
+import {
+  combineValidators,
+  isRequired,
+  composeValidators,
+  hasLengthGreaterThan,
+} from "revalidate";
 import { RootStoreContext } from "../../../app/stores/rootStore";
 
 const validate = combineValidators({
-  title: isRequired({message: "A title is required"}),
-  category: isRequired('Category'),
+  title: isRequired({ message: "A title is required" }),
+  category: isRequired("Category"),
   description: composeValidators(
-    isRequired('Description'),
-    hasLengthGreaterThan(4)({message: "Description needs to be at least 4 characters"})
+    isRequired("Description"),
+    hasLengthGreaterThan(4)({
+      message: "Description needs to be at least 4 characters",
+    })
   )(),
-  city: isRequired('City'),
-  venue: isRequired('Venue'),
-  date: isRequired('Date'),
-  time: isRequired('Time')
-})
+  city: isRequired("City"),
+  venue: isRequired("Venue"),
+  date: isRequired("Date"),
+  time: isRequired("Time"),
+});
 
 interface DetailParams {
   id: string;
