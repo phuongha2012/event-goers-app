@@ -10,7 +10,7 @@ const ActivityDetailedInfo : React.FC<{activity: IActivity}> = ({activity}) => {
         <Segment attached="top">
           <Grid>
             <Grid.Column width={1}>
-              <Icon size="large" color="teal" name="info" />
+              <Icon size="large" color="grey" name="info" />
             </Grid.Column>
             <Grid.Column width={15}>
               <p>{activity.description}</p>
@@ -20,7 +20,7 @@ const ActivityDetailedInfo : React.FC<{activity: IActivity}> = ({activity}) => {
         <Segment attached>
           <Grid verticalAlign="middle">
             <Grid.Column width={1}>
-              <Icon name="calendar" size="large" color="teal" />
+              <Icon name="calendar" size="large" color="grey" />
             </Grid.Column>
             <Grid.Column width={15}>
               <span>{format(activity.date, 'eeee do MMMM')} at {format(activity.date, 'h:mm a')}</span>
@@ -30,7 +30,7 @@ const ActivityDetailedInfo : React.FC<{activity: IActivity}> = ({activity}) => {
         <Segment attached>
           <Grid verticalAlign="middle">
             <Grid.Column width={1}>
-              <Icon name="marker" size="large" color="teal" />
+              <Icon name="marker" size="large" color="grey" />
             </Grid.Column>
             <Grid.Column width={11}>
               <span>

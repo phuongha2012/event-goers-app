@@ -5,9 +5,9 @@ body {
 .ui.inverted.top.fixed.menu {
   background-image: linear-gradient(
     135deg,
-    rgb(24, 42, 115) 0%,
-    rgb(33, 138, 174) 69%,
-    rgb(32, 167, 172) 89%
+    rgb(214 12 165 / 85%) 0%,
+    rgb(174 33 67) 69%,
+    rgb(172, 32, 84) 89%
   ) !important;
 }
 
@@ -17,10 +17,10 @@ body {
   display: flex;
   align-items: center;
   background-image: linear-gradient(
-          135deg,
-          rgb(24, 42, 115) 0%,
-          rgb(33, 138, 174) 69%,
-          rgb(32, 167, 172) 89%
+    135deg,
+    rgb(214 12 165 / 85%) 0%,
+    rgb(174 33 67) 69%,
+    rgb(172, 32, 84) 89%
   ) !important;
   height: 100vh;
 }

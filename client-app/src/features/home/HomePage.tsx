@@ -20,18 +20,18 @@ const HomePage = () => {
             alt="logo"
             style={{ marginBottom: 12 }}
           />
-          Reactivities
+          Event Goers
         </Header>
         {isLoggedIn && user ? (
           <Fragment>
             <Header as="h2" inverted content={`Welcome back ${user.displayName}`} />
             <Button as={Link} to="/activities" size="huge" inverted>
-              Go to the activities!
+              See upcoming event!
             </Button>
           </Fragment>
         ) : (
           <Fragment>
-            <Header as="h2" inverted content="Welcome to Reactivities" />
+            <Header as="h2" inverted content="Welcome to Event Goers" />
             <Button onClick={() => openModal(<LoginForm />)} size="huge" inverted>
               Login
             </Button>

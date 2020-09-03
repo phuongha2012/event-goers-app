@@ -29,10 +29,10 @@ const ActivityDetailedChat = () => {
           textAlign="center"
           attached="top"
           inverted
-          color="teal"
+          color="pink"
           style={{ border: "none" }}
         >
-          <Header>Chat about this event</Header>
+        <Header>Chat about this event</Header>
         </Segment>
         <Segment attached>
           <Comment.Group>

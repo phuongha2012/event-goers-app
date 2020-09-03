@@ -8,22 +8,8 @@ interface IProps {
 
 const ActivityListItemAttendees: React.FC<IProps> = ({ attendees }) => {
   return (
-    <List horizontal>
-      {attendees.map((attendee) => (
-        <List.Item>
-          <Popup
-            header={attendee.displayName}
-            trigger={
-              <Image
-                size="mini"
-                circular
-                src={attendee.image || "/assets/user.png"}
-              />
-            }
-          />
-        </List.Item>
-      ))}
-    </List>
+      <p>{attendees.length} {attendees.length === 1 ? "person" : "people"}{" "}
+      going</p>
   );
 };
 

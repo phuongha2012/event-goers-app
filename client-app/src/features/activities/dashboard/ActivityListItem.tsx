@@ -15,9 +15,9 @@ export const ActivityListItem: React.FC<{ activity: IActivity }> = ({
         <Item.Group>
           <Item key={activity.id}>
             <Item.Image
-              size="tiny"
-              circular
-              src={host.image || "/assets/user.png"}
+              size="small"
+              rounded
+              src={`/assets/categoryImages/${activity.category}.jpg`}
               style={{ marginBottom: 3 }}
             />
             <Item.Content>
@@ -61,7 +61,7 @@ export const ActivityListItem: React.FC<{ activity: IActivity }> = ({
           to={`/activities/${activity.id}`}
           floated="right"
           content="View"
-          color="blue"
+          color="red"
         />
       </Segment>
     </Segment.Group>
