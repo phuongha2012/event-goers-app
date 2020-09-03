@@ -1,6 +1,6 @@
-import { observable, action, computed, runInAction } from 'mobx';
+import { observable, action, computed, runInAction, toJS } from 'mobx';
 import { SyntheticEvent } from 'react';
-import { IActivity } from '../models/activity';
+import { IActivity, IAttendee } from '../models/activity';
 import agent from '../api/agent';
 import { history } from '../..';
 import { toast } from 'react-toastify';
@@ -83,6 +83,16 @@ export default class ActivityStore {
             return activities;
         }, {} as {[key: string]: IActivity[]}));
     } 
+
+    @computed get activititesGoingByUser() {
+        const allActivitites = Array.from(this.activityRegistry.values());
+        const filteredActivities =  allActivitites.filter(activity => this.findUserAttendingActivitites(activity.attendees, this.rootStore.userStore.user!.username))
+        return filteredActivities.map(activity => toJS(activity));
+    }
+
+    findUserAttendingActivitites(attendees: IAttendee[], userName: string) {
+        return attendees.some(attendee => attendee.username === userName);
+    }
 
     @action loadActivities = async () => {
         this.loadingInitial = true;

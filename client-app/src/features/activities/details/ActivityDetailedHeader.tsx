@@ -65,7 +65,7 @@ const ActivityDetailedHeader: React.FC<{ activity: IActivity }> = ({
           ) : activity.isGoing ? (
             <Button loading={loading} onClick={cancelAttendance}>Cancel attendance</Button>
           ) : (
-            <Button loading={loading} onClick={attendActivity} color="teal">Join Activity</Button>
+            <Button loading={loading} onClick={attendActivity} color="red">Join Activity</Button>
           )}
         </Segment>
       </Segment.Group>

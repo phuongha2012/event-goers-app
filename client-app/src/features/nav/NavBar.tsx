@@ -24,13 +24,17 @@ const NavBar: React.FC = () => {
           <Button
             as={NavLink}
             to="/createActivity"
-            positive
+            inverted
             content="Create Activity"
           />
         </Menu.Item>
         {user && (
           <Menu.Item position="right">
-            <Image avatar spaced="right" src={user.image || "/assets/user.png"} />
+            <Image
+              avatar
+              spaced="right"
+              src={user.image || "/assets/user.png"}
+            />
             <Dropdown pointing="top left" text={user.displayName}>
               <Dropdown.Menu>
                 <Dropdown.Item
