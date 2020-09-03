@@ -5,7 +5,7 @@ import ActivityProfile from './ActivityProfile'
 
 const panes = [
     {menuItem: 'Activities', render: () => <ActivityProfile />},
-    {menuItem: 'Photos', render: () => <ProfilePhotos />}  
+    {menuItem: 'Profile Photo', render: () => <ProfilePhotos />}  
 ]
 
 const ProfileContent = () => {

@@ -29,7 +29,7 @@ const ProfilePhotos = () => {
     <Tab.Pane>
       <Grid>
         <Grid.Column width={16} style={{ paddingBottom: 0 }}>
-          <Header floated="left" icon="image" content="Photos" />
+          <Header floated="left" icon="image" content="Edit your profile photo" />
           {isCurrentUser && (
             <Button
               floated="right"
