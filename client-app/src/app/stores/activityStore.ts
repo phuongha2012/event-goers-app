@@ -90,6 +90,12 @@ export default class ActivityStore {
         return filteredActivities.map(activity => toJS(activity));
     }
 
+    @computed get activititesHostingByUser() {
+        const allActivitites = Array.from(this.activityRegistry.values());
+        const filteredActivities =  allActivitites.filter(activity => activity.isHost)
+        return filteredActivities.map(activity => toJS(activity));
+    }
+
     @action loadActivities = async () => {
         this.loadingInitial = true;
         try {

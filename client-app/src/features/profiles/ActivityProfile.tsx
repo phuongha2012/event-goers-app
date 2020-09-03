@@ -5,9 +5,10 @@ import { toJS } from 'mobx';
 
 const ActivityProfile = () => {
     const rootStore = useContext(RootStoreContext);
-    const allActivities = rootStore.activityStore.activititesGoingByUser;
+    const activitiesToGo = rootStore.activityStore.activititesGoingByUser;
+    const activitiesToHost = rootStore.activityStore.activititesHostingByUser;
     useEffect(() => {
-        console.log(allActivities);
+        console.log(activitiesToHost);
     })
     return (
         <div>
