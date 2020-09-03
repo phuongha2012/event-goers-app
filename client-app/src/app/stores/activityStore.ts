@@ -86,12 +86,8 @@ export default class ActivityStore {
 
     @computed get activititesGoingByUser() {
         const allActivitites = Array.from(this.activityRegistry.values());
-        const filteredActivities =  allActivitites.filter(activity => this.findUserAttendingActivitites(activity.attendees, this.rootStore.userStore.user!.username))
+        const filteredActivities =  allActivitites.filter(activity => activity.isGoing && !activity.isHost)
         return filteredActivities.map(activity => toJS(activity));
-    }
-
-    findUserAttendingActivitites(attendees: IAttendee[], userName: string) {
-        return attendees.some(attendee => attendee.username === userName);
     }
 
     @action loadActivities = async () => {
