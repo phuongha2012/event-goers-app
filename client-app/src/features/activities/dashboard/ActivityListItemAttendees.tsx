@@ -1,5 +1,4 @@
 import React from "react";
-import { List, Image, Popup } from "semantic-ui-react";
 import { IAttendee } from "../../../app/models/activity";
 
 interface IProps {

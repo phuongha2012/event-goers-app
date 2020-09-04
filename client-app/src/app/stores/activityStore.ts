@@ -1,6 +1,6 @@
 import { observable, action, computed, runInAction, toJS } from 'mobx';
 import { SyntheticEvent } from 'react';
-import { IActivity, IAttendee } from '../models/activity';
+import { IActivity } from '../models/activity';
 import agent from '../api/agent';
 import { history } from '../..';
 import { toast } from 'react-toastify';
@@ -55,7 +55,6 @@ export default class ActivityStore {
             .then(() => {
                 this.hubConnection!.stop();
             })
-            .then(() => console.log('Connection stopped'))
             .catch(error => console.log(error));
     }
 
@@ -69,7 +68,6 @@ export default class ActivityStore {
     } 
 
     @computed get activitiesByDate() {
-        // return Array.from(this.activityRegistry.values()).sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
         return this.groupActivitiesByDate(Array.from(this.activityRegistry.values()))
     }
 

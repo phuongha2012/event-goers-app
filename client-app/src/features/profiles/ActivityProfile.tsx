@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { RootStoreContext } from "../../app/stores/rootStore";
-import { toJS } from "mobx";
 import { Header, Tab, Card, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
